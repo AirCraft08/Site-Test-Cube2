@@ -39,34 +39,7 @@ async function getUsers() {
 }
 
 
-const apiUrl = "http://127.0.0.1:8000/api/utilisateurs";
-
-async function fetchUsers() {
-    try {
-        const response = await fetch(apiUrl);
-        const users = await response.json();
-
-        const userTable = document.getElementById("userTable");
-        userTable.innerHTML = ""; // Nettoie le tableau avant d'ajouter des données
-
-        users.forEach(user => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                        <td>${user.id}</td>
-                        <td>${user.name}</td>
-                        <td>${user.email}</td>
-                    `;
-            userTable.appendChild(row);
-        });
-    } catch (error) {
-        console.error("Erreur lors du chargement des utilisateurs:", error);
-    }
-}
-
-// Charger les utilisateurs au chargement de la page
-document.addEventListener("DOMContentLoaded", fetchUsers);
 
 
-fetchUsers();
 
 getUsers();
